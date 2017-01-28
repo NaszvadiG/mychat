@@ -1,0 +1,74 @@
+﻿body{
+    padding-bottom: 70px;
+    padding-top: 70px;
+}
+.wrapper{
+    width: 40%;
+    height: auto;
+    margin: auto;
+}
+.message{
+    font-family: 'Segoe UI';
+    background-color: blanchedalmond;
+}
+.mymess{
+    background-color: #b6d6f2;
+}
+#message_text{
+    height: 100px;
+}
+.user{
+    color: #333;
+    font-size: 16px;
+    font-weight: bold;
+}
+.text{
+    font-size: 14px;
+    clear: left;
+}
+.datetime{
+    font-size: 11px;
+}
+.avatar{
+    width: 40px;
+    height: 40px;
+    border-radius: 20px;
+    float: left;
+    margin: 10px;
+}
+.form{
+    width: 350px;
+    margin: auto;
+}
+.unauth{
+    margin: auto;
+    text-align: center;
+}
+.mynavbar{
+    width: 60%;
+    margin-left: auto;
+    margin-right: auto;
+    border-radius: 0 0 4px 4px;
+    border-width: 0 1px 1px 1px;
+    border-color: gray;
+    background-color: #d8d8d8;
+    
+}
+.mynavbar-bot{
+    border-radius: 4px 4px 0 0;
+    border-width: 1px 1px 0 1px;
+    
+}
+.footer{
+    text-align: center;
+    padding: 15px;
+}
+.cur_user{
+    font-weight: 700;
+    font-size: 20px;
+}
+#form-messages{
+    padding-top: 20px;
+    width: 350px;
+    margin: auto;
+}
