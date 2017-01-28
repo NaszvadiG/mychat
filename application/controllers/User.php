@@ -131,6 +131,52 @@ class User extends CI_Controller{
         delete_cookie('user');
         redirect('/');
     }
+    public function profile(){
+        if(isset($_COOKIE['user'])){
+            $login = $_COOKIE['user'];
+            $this->load->model('UserModel');
+            $data['title'] = 'Chat / Профиль';
+            $data['heading'] = 'Профиль пользователя';
+            $data['profile'] = $this->UserModel->get_user_profile($login);
+            
+            $this->load->view('templates/header', $data);
+    		$this->load->view('user/profile', $data);
+            $this->load->view('templates/footer');
+        }
+        else redirect('/');
+    }
+    public function edit(){
+        if(isset($_COOKIE['user'])){
+            if(isset($_POST['name']) or isset($_POST['surname']) or isset($_POST['email']) or isset($_POST['phone']) or isset($_POST['about'])){
+                $this->load->model('UserModel');
+                $login = $_COOKIE['user'];
+                $name = stripslashes(htmlspecialchars(trim($_POST['name'])));
+                $surname = stripslashes(htmlspecialchars(trim($_POST['surname'])));
+                $email = stripslashes(htmlspecialchars(trim($_POST['email'])));
+                $phone = stripslashes(htmlspecialchars(trim($_POST['phone'])));
+                $about = stripslashes(htmlspecialchars(trim($_POST['about'])));
+                if($this->UserModel->update_user_profile($login, $name, $surname, $email, $phone, $about)) $data['message'] = 'Профиль сохранен';
+                $data['title'] = 'Chat / Профиль';
+                $data['heading'] = 'Редактирование профиля';
+                $data['profile'] = $this->UserModel->get_user_profile($login);
+                $this->load->view('templates/header', $data);
+        		$this->load->view('user/edit', $data);
+                $this->load->view('templates/footer');
+            }
+            else{
+                $login = $_COOKIE['user'];
+                $this->load->model('UserModel');
+                $data['title'] = 'Chat / Профиль';
+                $data['heading'] = 'Редактирование профиля';
+                $data['profile'] = $this->UserModel->get_user_profile($login);
+                $this->load->view('templates/header', $data);
+        		$this->load->view('user/edit', $data);
+                $this->load->view('templates/footer');
+            }
+            
+        }
+        else redirect('/');
+    }
 }
 
 

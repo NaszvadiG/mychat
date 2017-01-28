@@ -1,12 +1,9 @@
 <?
-
 class ChatModel extends CI_Model{
     
-    public function __construct()
-    {
+    public function __construct(){
         $this->load->database();
     }
-    
     public function Get_all_messages_from_chat(){
         $this->db->order_by('date DESC, time DESC');
         $query = $this->db->get('messages');
@@ -20,5 +17,4 @@ class ChatModel extends CI_Model{
             'time' => date('H:i:s')));
     }
 }
-
 ?>
