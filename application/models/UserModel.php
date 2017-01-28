@@ -2,11 +2,9 @@
 
 class UserModel extends CI_Model{
     
-    public function __construct()
-    {
+    public function __construct(){
         $this->load->database();
     }
-    
     public function search_user_by_login($login){
         $query = $this->db->get_where('users', array('login' => $login)); //$this->db->get_where('users', array('login' => $login, 'password' => $pass)
         if($query) return $query->row();
@@ -29,6 +27,21 @@ class UserModel extends CI_Model{
             );
             return true;
         }
+    }
+    public function get_user_profile($login){
+        $uid = $this->db->get_where('users', array('login' => $login))->row()->id;
+        $query = $this->db->get_where('user_profiles', array('user_id' => $uid));
+        return $query->result();
+    }
+    public function update_user_profile($login, $name, $surname, $email, $phone, $about){
+        //Сделать обновление профиля
+        $uid = $this->db->get_where('users', array('login' => $login))->row()->id;
+        $this->db->where('user_id', $uid);
+        $query = $this->db->update('user_profiles', array('name' => $name, 'surname' => $surname, 'email' => $email, 'phone' => $phone, 'about' => $about));
+        if($query) return true; else return false;
+    }
+    public function insert_user_profile(){
+        //!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
     }
 }
 
