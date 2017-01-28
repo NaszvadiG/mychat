@@ -36,7 +36,7 @@
         <button type="submit" class="btn btn-default">Вперед!</button>
       </form>-->
       <ul class="nav navbar-nav navbar-right">
-        <li><? if(isset($_COOKIE['user'])) echo anchor('#', $_COOKIE['user'], array('class'=> 'cur_user', 'title' => 'Текущий пользователь')); ?></li>
+        <li><? if(isset($_COOKIE['user'])) echo anchor('/user/profile', $_COOKIE['user'], array('class'=> 'cur_user', 'title' => 'Текущий пользователь')); ?></li>
         <li><? if(!isset($_COOKIE['user'])) echo anchor('/user/signin', 'Вход'); else echo anchor('/user/signout', 'Выход'); ?></li>
         <li><? if(!isset($_COOKIE['user'])) echo anchor('/user/signup', 'Регистрация') ?></li>
       </ul>
