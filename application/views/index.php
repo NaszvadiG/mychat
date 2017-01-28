@@ -16,7 +16,7 @@
             <?php foreach($query as $row):?>
             <tr>
             <td class="message <? if($row->user == $_COOKIE['user']) echo 'mymess' ?>">
-                <? echo img(array('src' => '/themes/ava.jpg', 'class' => 'avatar')); ?>
+                <? echo img(array('src' => '/themes/ava.jpg', 'class' => 'avatar small-avatar')); ?>
                 <div class="user"><?=$row->user;?></div>
                 <div class="datetime"><?=nice_date($row->date, 'd-m-Y');?> <?=nice_date($row->time, 'H:i');?></div>
                 <div class="text"><?=$row->message;?></div>
