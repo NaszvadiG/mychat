@@ -34,14 +34,15 @@ class UserModel extends CI_Model{
         return $query->result();
     }
     public function update_user_profile($login, $name, $surname, $email, $phone, $about){
-        //Сделать обновление профиля
         $uid = $this->db->get_where('users', array('login' => $login))->row()->id;
         $this->db->where('user_id', $uid);
         $query = $this->db->update('user_profiles', array('name' => $name, 'surname' => $surname, 'email' => $email, 'phone' => $phone, 'about' => $about));
         if($query) return true; else return false;
     }
-    public function insert_user_profile(){
-        //!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+    public function insert_user_profile($login){
+        $uid = $this->db->get_where('users', array('login' => $login))->row()->id;
+        $query = $this->db->insert('user_profiles', array('user_id' => $uid, 'registered' => date('Y-m-d')));
+        if($query) return true; else return false;
     }
 }
 
