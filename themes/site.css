@@ -1,7 +1,7 @@
 ﻿body{
     padding-bottom: 70px;
     padding-top: 70px;
-    background-color: #EEEEEE;
+    background-color: #FFE271; /* EEEEEE */
 }
 .wrapper{
     width: 40%;
@@ -19,13 +19,14 @@
     height: 100px;
 }
 .user{
-    color: #333;
+    color: blue;
     font-size: 16px;
-    font-weight: bold;
+    font-weight: 600;
 }
 .text{
     font-size: 14px;
-    clear: left;
+    padding-top: 5px;
+    padding-bottom: 5px;
 }
 .datetime{
     font-size: 11px;
@@ -34,7 +35,6 @@
     width: 100px;
     height: 100px;
     border-radius: 50px;
-    float: left;
     margin: 10px;
 }
 .small-avatar{
@@ -49,6 +49,8 @@
 .unauth{
     margin: auto;
     text-align: center;
+    font-weight: bold;
+    color: #E32636;
 }
 .mynavbar{
     width: 60%;
@@ -58,6 +60,7 @@
     border-width: 0 1px 1px 1px;
     border-color: gray;
     background-color: #d8d8d8; /* #d8d8d8*/
+    box-shadow: 0 0 15px rgba(0,0,0,0.5);
 }
 .mynavbar-bot{
     border-radius: 4px 4px 0 0;
@@ -65,7 +68,7 @@
 }
 .footer{
     text-align: center;
-    padding: 15px;
+    padding-top: 10px;
 }
 .cur_user{
     font-weight: 700;
