@@ -79,6 +79,7 @@ class User extends CI_Controller{
                                             'matches' => 'Пароль и подтверждение пароля должны совпадать'));
         
         if($this->form_validation->run() == FALSE){
+            //Если форма не прошла валидацию - выводим ее снова
             $this->load->view('templates/header', $data);
     		$this->load->view('user/signup', $data);
             $this->load->view('templates/footer');
@@ -87,6 +88,7 @@ class User extends CI_Controller{
             $login = stripslashes(htmlspecialchars(trim($_POST['login'])));
             $pass = stripslashes(htmlspecialchars(trim($_POST['pass'])));
             if($this->UserModel->add_user($login, $pass)){ //Попытка добавления нового пользователя
+                $this->UserModel->insert_user_profile($login); //Добавление профиля нового пользователя
                 $data['message'] = 'Пользователь успешно зарегистрирован';
                 $data['mes_type'] = 'success';
                 $this->load->view('templates/header', $data);
@@ -173,7 +175,6 @@ class User extends CI_Controller{
         		$this->load->view('user/edit', $data);
                 $this->load->view('templates/footer');
             }
-            
         }
         else redirect('/');
     }

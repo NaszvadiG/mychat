@@ -16,7 +16,7 @@ class Chat extends CI_Controller{
         else{
             if(isset($_COOKIE['user']))
             {
-                $user = stripslashes(htmlspecialchars(trim($_COOKIE['user'])));
+                $user = $_COOKIE['user'];
                 $message = stripslashes(htmlspecialchars(trim($_POST['message'])));
                 $this->ChatModel->Add_message_in_chat($user, $message);
             }
@@ -25,6 +25,13 @@ class Chat extends CI_Controller{
     		$this->load->view('index', $data);
             $this->load->view('templates/footer');
         }
+    }
+    public function about(){
+        $data['title'] = 'Chat / О проекте';
+        $data['heading'] = 'О проекте';
+        $this->load->view('templates/header', $data);
+		$this->load->view('about', $data);
+        $this->load->view('templates/footer');
     }
 }
 ?>
